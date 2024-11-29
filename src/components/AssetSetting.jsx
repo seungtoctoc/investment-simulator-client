@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AssetPicking from './AssetPicking';
 import AssetTermSetting from './AssetTermSetting';
+import OnBoarding from './OnBoarding';
 
 export default function AssetSetting() {
   return (
@@ -12,6 +13,7 @@ export default function AssetSetting() {
       <Row>
         <Col xs={7}>
           <AssetPicking />
+          <OnBoarding />
         </Col>
         <Col>
           <AssetTermSetting />
