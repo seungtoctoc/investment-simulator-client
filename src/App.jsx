@@ -1,9 +1,9 @@
-import Button from 'react-bootstrap/Button';
+import MainPage from './pages/MainPage';
 
 function App() {
   return (
     <>
-      <Button variant='primary'>Primary</Button>
+      <MainPage />
     </>
   );
 }
