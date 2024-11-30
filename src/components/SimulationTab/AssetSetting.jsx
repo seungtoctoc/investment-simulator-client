@@ -3,9 +3,10 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import AssetPicking from './AssetPicking';
-import AssetTermSetting from './AssetTermSetting';
-import OnBoarding from './OnBoarding';
+
+import AssetPicking from './AssetSetting/AssetPicking.jsx';
+import AssetTermSetting from './AssetSetting/AssetTermSetting.jsx';
+import OnBoarding from './AssetSetting/OnBoarding.jsx';
 
 export default function AssetSetting(props) {
   const setSymbol = props.setSymbol;
@@ -14,6 +15,8 @@ export default function AssetSetting(props) {
   const setSeed = props.setSeed;
   const setMonthly = props.setMonthly;
   const setIsReinvestment = props.setIsReinvestment;
+  const isDollar = props.isDollar;
+  const setIsDollar = props.setIsDollar;
 
   return (
     <Container>
@@ -29,6 +32,8 @@ export default function AssetSetting(props) {
             setSeed={setSeed}
             setMonthly={setMonthly}
             setIsReinvestment={setIsReinvestment}
+            isDollar={isDollar}
+            setIsDollar={setIsDollar}
           />
         </Col>
       </Row>

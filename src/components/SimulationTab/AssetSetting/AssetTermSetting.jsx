@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { convertNumberToKorean } from '../utils/convert';
+
+import { convertNumberToKorean } from '../../../utils/convert.js';
 
 export default function AssetTermSetting(props) {
   const period = props.period;
@@ -10,6 +11,8 @@ export default function AssetTermSetting(props) {
   const setSeed = props.setSeed;
   const setMonthly = props.setMonthly;
   const setIsReinvestment = props.setIsReinvestment;
+  const isDollar = props.isDollar;
+  const setIsDollar = props.setIsDollar;
 
   const [seedText, setSeedText] = useState('');
   const [seedError, setSeedError] = useState(false);
@@ -19,12 +22,27 @@ export default function AssetTermSetting(props) {
   const [monthlyError, setMonthlyError] = useState(false);
   const [formattedMonthly, setFormattedMonthly] = useState(0);
 
+  const [forexText, setForexText] = useState('원 (KRW ₩)');
+
   const periods = [1, 2, 5, 10, 20, 30];
+  useEffect(() => {
+    console.log('effect');
+    if (isDollar) {
+      setForexText('달러 (USD $)');
+      return;
+    }
+    setForexText('원 (KRW ₩)');
+  }, [isDollar]);
 
   return (
     <div className='p-4'>
       <Form.Label>
-        기간: <strong className='h5'>{period}년</strong>
+        투자 기간: <strong className='h5'>{period}년</strong>
+        <br />
+        <span className='text-secondary'>
+          {' '}
+          period: {period} year{period > 1 ? 's' : ''}
+        </span>
       </Form.Label>
       <Form.Range
         min='0'
@@ -57,7 +75,7 @@ export default function AssetTermSetting(props) {
             setSeedText(convertNumberToKorean(rawValue) + '원');
           }}
         />
-        <InputGroup.Text> 원 (KRW) </InputGroup.Text>
+        <InputGroup.Text> {forexText} </InputGroup.Text>
       </InputGroup>
       <p
         className={
@@ -88,7 +106,7 @@ export default function AssetTermSetting(props) {
             setMonthlyText(convertNumberToKorean(rawMonthly) + '원');
           }}
         />
-        <InputGroup.Text> 원 (KRW) </InputGroup.Text>
+        <InputGroup.Text> {forexText} </InputGroup.Text>
       </InputGroup>
       <p
         className={
@@ -105,6 +123,16 @@ export default function AssetTermSetting(props) {
         label='배당금 재투자'
         onChange={(e) => {
           setIsReinvestment(e.target.checked);
+        }}
+      />
+
+      <Form.Check
+        className='mt-4'
+        type='switch'
+        id='isDollar'
+        label='달러(USD $)'
+        onChange={(e) => {
+          setIsDollar(e.target.checked);
         }}
       />
     </div>
