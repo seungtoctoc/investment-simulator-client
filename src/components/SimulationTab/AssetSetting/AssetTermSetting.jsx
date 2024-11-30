@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 import { convertNumberToKorean } from '../../../utils/convert.js';
+import PeriodPicking from './AssetTermSetting/PeriodPicking.jsx';
+import InputMoney from './AssetTermSetting/InputMoney.jsx';
 
 export default function AssetTermSetting(props) {
   const period = props.period;
@@ -35,86 +37,12 @@ export default function AssetTermSetting(props) {
   }, [isDollar]);
 
   return (
-    <div className='p-4'>
-      <Form.Label>
-        투자 기간: <strong className='h5'>{period}년</strong>
-        <br />
-        <span className='text-secondary'>
-          {' '}
-          period: {period} year{period > 1 ? 's' : ''}
-        </span>
-      </Form.Label>
-      <Form.Range
-        min='0'
-        max='5'
-        label='preiod'
-        defaultValue='3'
-        onChange={(e) => {
-          setPeriod(periods[e.target.value]);
-        }}
-      />
+    <div>
+      <PeriodPicking period={period} setPeriod={setPeriod} />
 
-      <Form.Label className='mt-4'>시드</Form.Label>
-      <InputGroup className=''>
-        <Form.Control
-          aria-label='seed'
-          value={formattedSeed}
-          onChange={(e) => {
-            const rawValue = Number(e.target.value.replaceAll(',', ''));
+      <InputMoney title='시드' setMoney={setSeed} forexText={forexText} />
 
-            if (isNaN(rawValue)) {
-              setSeedText('숫자를 입력하세요');
-              setSeedError(true);
-              return;
-            }
-
-            setFormattedSeed(rawValue.toLocaleString());
-            setSeed(rawValue);
-
-            setSeedError(false);
-            setSeedText(convertNumberToKorean(rawValue) + '원');
-          }}
-        />
-        <InputGroup.Text> {forexText} </InputGroup.Text>
-      </InputGroup>
-      <p
-        className={
-          seedError ? 'text-end text-danger' : 'text-end text-body-secondary'
-        }
-      >
-        {seedText}
-      </p>
-
-      <Form.Label className='mt-2'>월 납입</Form.Label>
-      <InputGroup className=''>
-        <Form.Control
-          aria-label='monthly'
-          value={formattedMonthly}
-          onChange={(e) => {
-            const rawMonthly = Number(e.target.value.replaceAll(',', ''));
-
-            if (isNaN(rawMonthly)) {
-              setMonthlyText('숫자를 입력하세요');
-              setMonthlyError(true);
-              return;
-            }
-
-            setFormattedMonthly(rawMonthly.toLocaleString());
-            setMonthly(rawMonthly);
-
-            setMonthlyError(false);
-            setMonthlyText(convertNumberToKorean(rawMonthly) + '원');
-          }}
-        />
-        <InputGroup.Text> {forexText} </InputGroup.Text>
-      </InputGroup>
-      <p
-        className={
-          monthlyError ? 'text-end text-danger' : 'text-end text-body-secondary'
-        }
-      >
-        {monthlyText}
-      </p>
+      <InputMoney title='월 납입' setMoney={setMonthly} forexText={forexText} />
 
       <Form.Check
         className='mt-4'

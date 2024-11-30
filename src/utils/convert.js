@@ -3,7 +3,7 @@ export const convertNumberToKorean = (number) => {
 
   const digits = ['영', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
   const units = ['', '십', '백', '천'];
-  const bigUnits = ['', '만', '억', '조', '경'];
+  const bigUnits = ['', '만', '억 ', '조 ', '경 '];
 
   const numString = number.toString();
   let result = '';
