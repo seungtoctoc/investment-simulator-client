@@ -14,7 +14,7 @@ export default function AssetSetting(props) {
   const setPeriod = props.setPeriod;
   const setSeed = props.setSeed;
   const setMonthly = props.setMonthly;
-  const setIsReinvestment = props.setIsReinvestment;
+  const setIsReinvest = props.setIsReinvest;
   const isDollar = props.isDollar;
   const setIsDollar = props.setIsDollar;
 
@@ -31,7 +31,7 @@ export default function AssetSetting(props) {
             setPeriod={setPeriod}
             setSeed={setSeed}
             setMonthly={setMonthly}
-            setIsReinvestment={setIsReinvestment}
+            setIsReinvest={setIsReinvest}
             isDollar={isDollar}
             setIsDollar={setIsDollar}
           />

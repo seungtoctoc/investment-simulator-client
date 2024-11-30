@@ -6,6 +6,7 @@ import { convertNumberToKorean } from '../../../../utils/convert.js';
 
 export default function InputMoney(props) {
   const title = props.title;
+  const subTitle = props.subTitle;
   const forexText = props.forexText;
   const setMoney = props.setMoney;
 
@@ -15,7 +16,10 @@ export default function InputMoney(props) {
 
   return (
     <>
-      <Form.Label className='mt-4'>시드</Form.Label>
+      <Form.Label className='mt-4'>
+        {title}
+        <span className='text-secondary'> {subTitle}</span>
+      </Form.Label>
       <InputGroup className=''>
         <Form.Control
           value={formattedMoney}
@@ -39,7 +43,7 @@ export default function InputMoney(props) {
       </InputGroup>
       <p
         className={
-          isNumber ? 'text-end text-body-secondary' : 'text-end text-danger'
+          isNumber ? 'text-end text-secondary' : 'text-end text-danger'
         }
       >
         {text}

@@ -1,32 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-
-import { convertNumberToKorean } from '../../../utils/convert.js';
 import PeriodPicking from './AssetTermSetting/PeriodPicking.jsx';
 import InputMoney from './AssetTermSetting/InputMoney.jsx';
+import CheckForm from './AssetTermSetting/checkForm.jsx';
 
 export default function AssetTermSetting(props) {
   const period = props.period;
   const setPeriod = props.setPeriod;
   const setSeed = props.setSeed;
   const setMonthly = props.setMonthly;
-  const setIsReinvestment = props.setIsReinvestment;
+  const setIsReinvest = props.setIsReinvest;
   const isDollar = props.isDollar;
   const setIsDollar = props.setIsDollar;
 
-  const [seedText, setSeedText] = useState('');
-  const [seedError, setSeedError] = useState(false);
-  const [formattedSeed, setFormattedSeed] = useState(0);
-
-  const [monthlyText, setMonthlyText] = useState('');
-  const [monthlyError, setMonthlyError] = useState(false);
-  const [formattedMonthly, setFormattedMonthly] = useState(0);
-
   const [forexText, setForexText] = useState('원 (KRW ₩)');
 
-  const periods = [1, 2, 5, 10, 20, 30];
   useEffect(() => {
     console.log('effect');
     if (isDollar) {
@@ -39,30 +27,24 @@ export default function AssetTermSetting(props) {
   return (
     <div>
       <PeriodPicking period={period} setPeriod={setPeriod} />
-
-      <InputMoney title='시드' setMoney={setSeed} forexText={forexText} />
-
-      <InputMoney title='월 납입' setMoney={setMonthly} forexText={forexText} />
-
-      <Form.Check
-        className='mt-4'
-        type='switch'
-        id='isReinvestment'
-        label='배당금 재투자'
-        onChange={(e) => {
-          setIsReinvestment(e.target.checked);
-        }}
+      <InputMoney
+        title='시드'
+        subTitle='seed money'
+        setMoney={setSeed}
+        forexText={forexText}
       />
-
-      <Form.Check
-        className='mt-4'
-        type='switch'
-        id='isDollar'
-        label='달러(USD $)'
-        onChange={(e) => {
-          setIsDollar(e.target.checked);
-        }}
+      <InputMoney
+        title='월 납입'
+        subTitle='monthly investment'
+        setMoney={setMonthly}
+        forexText={forexText}
       />
+      <CheckForm
+        title='배당금 재투자'
+        subTitle='reinvest dividends'
+        setFunction={setIsReinvest}
+      />
+      <CheckForm title='달러(USD $)' setFunction={setIsDollar} />
     </div>
   );
 }

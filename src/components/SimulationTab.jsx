@@ -8,7 +8,7 @@ export default function SimulationTab() {
   const [period, setPeriod] = useState(10);
   const [seed, setSeed] = useState(0);
   const [monthly, setMonthly] = useState(0);
-  const [isReinvestment, setIsReinvestment] = useState(false);
+  const [isReinvest, setIsReinvest] = useState(false);
   const [isDollar, setIsDollar] = useState(false);
 
   useEffect(() => {
@@ -17,9 +17,9 @@ export default function SimulationTab() {
     console.log('period: ' + period);
     console.log('seed: ' + seed);
     console.log('monthly: ' + monthly);
-    console.log('isReinvestment: ' + isReinvestment);
+    console.log('isReinvest: ' + isReinvest);
     console.log('isDallor: ' + isDollar);
-  }, [symbol, period, seed, monthly, isReinvestment, isDollar]);
+  }, [symbol, period, seed, monthly, isReinvest, isDollar]);
 
   return (
     <div>
@@ -29,7 +29,7 @@ export default function SimulationTab() {
         setPeriod={setPeriod}
         setSeed={setSeed}
         setMonthly={setMonthly}
-        setIsReinvestment={setIsReinvestment}
+        setIsReinvest={setIsReinvest}
         isDollar={isDollar}
         setIsDollar={setIsDollar}
       />
