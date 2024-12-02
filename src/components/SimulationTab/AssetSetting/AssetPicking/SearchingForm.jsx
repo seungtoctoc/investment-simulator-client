@@ -5,12 +5,27 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import { findAssets } from '../../../../apis/apis';
 import SearchResultCard from './SearchingForm/SearchResultCard';
 
-export default function SearchingForm() {
+export default function SearchingForm(props) {
+  const setAsset = props.setAsset;
+  const setSymbol = props.setSymbol;
+
   const [searchResult, setSearchResult] = useState([]);
   const [isListVisible, setIsListVisible] = useState(false);
   const formRef = useRef(null);
 
   const resultLimit = 10;
+
+  const clickResult = (asset) => {
+    setAsset({
+      type: asset.type,
+      symbol: asset.symbol,
+      exchange: asset.exchange,
+      name: asset.name,
+      korean_name: asset.korean_name,
+    });
+    setSymbol(asset.symbol);
+    setIsListVisible(false);
+  };
 
   const handleOutsideClick = (event) => {
     if (formRef.current && !formRef.current.contains(event.target)) {
@@ -56,7 +71,11 @@ export default function SearchingForm() {
             style={{ width: '100%', top: '100%', zIndex: 10 }}
           >
             {searchResult.map((asset, idx) => (
-              <SearchResultCard asset={asset} key={idx} />
+              <SearchResultCard
+                asset={asset}
+                key={idx}
+                clickResult={clickResult}
+              />
             ))}
           </ListGroup>
         )}
