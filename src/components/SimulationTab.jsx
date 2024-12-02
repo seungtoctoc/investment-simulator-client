@@ -11,15 +11,15 @@ export default function SimulationTab() {
   const [isReinvest, setIsReinvest] = useState(false);
   const [isDollar, setIsDollar] = useState(false);
 
-  useEffect(() => {
-    console.log('changed');
-    console.log('symbol: ' + symbol);
-    console.log('period: ' + period);
-    console.log('seed: ' + seed);
-    console.log('monthly: ' + monthly);
-    console.log('isReinvest: ' + isReinvest);
-    console.log('isDallor: ' + isDollar);
-  }, [symbol, period, seed, monthly, isReinvest, isDollar]);
+  // useEffect(() => {
+  //   console.log('changed');
+  //   console.log('symbol: ' + symbol);
+  //   console.log('period: ' + period);
+  //   console.log('seed: ' + seed);
+  //   console.log('monthly: ' + monthly);
+  //   console.log('isReinvest: ' + isReinvest);
+  //   console.log('isDallor: ' + isDollar);
+  // }, [symbol, period, seed, monthly, isReinvest, isDollar]);
 
   return (
     <div>

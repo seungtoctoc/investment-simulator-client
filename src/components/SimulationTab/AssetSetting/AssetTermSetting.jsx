@@ -16,7 +16,6 @@ export default function AssetTermSetting(props) {
   const [forexText, setForexText] = useState('원 (KRW ₩)');
 
   useEffect(() => {
-    console.log('effect');
     if (isDollar) {
       setForexText('달러 (USD $)');
       return;
