@@ -6,10 +6,12 @@ import Col from 'react-bootstrap/Col';
 
 import AssetPicking from './AssetSetting/AssetPicking.jsx';
 import AssetTermSetting from './AssetSetting/AssetTermSetting.jsx';
-import OnBoarding from './AssetSetting/OnBoarding.jsx';
+import Tips from './AssetSetting/Tips.jsx';
+import Advertising from './AssetSetting/Advertising.jsx';
 
 export default function AssetSetting(props) {
-  const setSymbol = props.setSymbol;
+  const setAsset = props.setAsset;
+  const asset = props.asset;
   const period = props.period;
   const setPeriod = props.setPeriod;
   const setSeed = props.setSeed;
@@ -22,8 +24,9 @@ export default function AssetSetting(props) {
     <Container>
       <Row>
         <Col xs={12} md={7}>
-          <AssetPicking setSymbol={setSymbol} />
-          <OnBoarding />
+          <AssetPicking setAsset={setAsset} isDollar={isDollar} asset={asset} />
+          <Tips />
+          <Advertising />
         </Col>
         <Col xs={12} md={5}>
           <AssetTermSetting

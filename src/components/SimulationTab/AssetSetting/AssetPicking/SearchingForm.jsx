@@ -7,7 +7,6 @@ import SearchResultCard from './SearchingForm/SearchResultCard';
 
 export default function SearchingForm(props) {
   const setAsset = props.setAsset;
-  const setSymbol = props.setSymbol;
   const isDollar = props.isDollar;
 
   const [searchResult, setSearchResult] = useState([]);
@@ -24,7 +23,6 @@ export default function SearchingForm(props) {
       name: asset.name,
       korean_name: asset.korean_name,
     });
-    setSymbol(asset.symbol);
     setIsListVisible(false);
   };
 

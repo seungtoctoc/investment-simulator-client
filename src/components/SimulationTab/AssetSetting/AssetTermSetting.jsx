@@ -24,7 +24,7 @@ export default function AssetTermSetting(props) {
   }, [isDollar]);
 
   return (
-    <div>
+    <div className='p-4'>
       <PeriodPicking period={period} setPeriod={setPeriod} />
       <InputMoney
         title='시드'
@@ -43,7 +43,11 @@ export default function AssetTermSetting(props) {
         subTitle='reinvest dividends'
         setFunction={setIsReinvest}
       />
-      <CheckForm title='달러(USD $)' setFunction={setIsDollar} />
+      <CheckForm
+        title='달러로 계산'
+        subTitle='calculate in USD($)'
+        setFunction={setIsDollar}
+      />
     </div>
   );
 }

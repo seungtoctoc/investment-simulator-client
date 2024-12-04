@@ -2,29 +2,28 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 
 import AssetSetting from './SimulationTab/AssetSetting';
+import SimulationResult from './SimulationTab/SimulationResult';
+import SubmitButton from './SimulationTab/SubmitButton';
 
 export default function SimulationTab() {
-  const [symbol, setSymbol] = useState('');
   const [period, setPeriod] = useState(10);
   const [seed, setSeed] = useState(0);
   const [monthly, setMonthly] = useState(0);
   const [isReinvest, setIsReinvest] = useState(false);
   const [isDollar, setIsDollar] = useState(false);
-
-  // useEffect(() => {
-  //   console.log('changed');
-  //   console.log('symbol: ' + symbol);
-  //   console.log('period: ' + period);
-  //   console.log('seed: ' + seed);
-  //   console.log('monthly: ' + monthly);
-  //   console.log('isReinvest: ' + isReinvest);
-  //   console.log('isDallor: ' + isDollar);
-  // }, [symbol, period, seed, monthly, isReinvest, isDollar]);
+  const [asset, setAsset] = useState({
+    symbol: 'VOO',
+    name: 'Vanguard 500 Index Fund',
+    type: 'etf',
+    exchange: 'AMEX',
+    korean_name: null,
+  });
 
   return (
     <div>
       <AssetSetting
-        setSymbol={setSymbol}
+        setAsset={setAsset}
+        asset={asset}
         period={period}
         setPeriod={setPeriod}
         setSeed={setSeed}
@@ -33,6 +32,8 @@ export default function SimulationTab() {
         isDollar={isDollar}
         setIsDollar={setIsDollar}
       />
+      <SubmitButton />
+      <SimulationResult />
     </div>
   );
 }
