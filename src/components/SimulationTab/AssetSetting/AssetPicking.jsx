@@ -9,7 +9,7 @@ export default function AssetPicking(props) {
   const asset = props.asset;
 
   return (
-    <div className='p-4'>
+    <div>
       <SearchingForm setAsset={setAsset} isDollar={isDollar} />
       <AssetCard asset={asset} />
     </div>

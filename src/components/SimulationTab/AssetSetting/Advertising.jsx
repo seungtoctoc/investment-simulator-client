@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Advertising() {
   return (
-    <div className='bg-info mt-4' style={{ height: '80px' }}>
+    <div className='mt-2 mb-2 bg-info' style={{ height: '100px' }}>
       Advertising
     </div>
   );

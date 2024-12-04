@@ -9,7 +9,7 @@ export default function PeriodPicking(props) {
   const periods = [1, 2, 5, 10, 20, 30];
 
   return (
-    <>
+    <div>
       <Form.Label>
         투자 기간: <strong className='h5'>{period}년</strong>
         <br />
@@ -18,6 +18,7 @@ export default function PeriodPicking(props) {
         </span>
       </Form.Label>
       <Form.Range
+        className='p-4'
         min='0'
         max='5'
         label='preiod'
@@ -26,6 +27,6 @@ export default function PeriodPicking(props) {
           setPeriod(periods[e.target.value]);
         }}
       />
-    </>
+    </div>
   );
 }

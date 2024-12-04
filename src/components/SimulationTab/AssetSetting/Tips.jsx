@@ -13,7 +13,8 @@ export default function OnBoarding() {
 
   return (
     <Swiper
-      style={{ height: '80px' }}
+      className='mt-4 mb-2 bg-primary'
+      style={{ height: '120px' }}
       direction={'vertical'}
       loop={true}
       autoplay={{

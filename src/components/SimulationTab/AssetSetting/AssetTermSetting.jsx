@@ -17,14 +17,14 @@ export default function AssetTermSetting(props) {
 
   useEffect(() => {
     if (isDollar) {
-      setForexText('달러 (USD $)');
+      setForexText('달러(USD)');
       return;
     }
-    setForexText('원 (KRW ₩)');
+    setForexText('원(KRW)');
   }, [isDollar]);
 
   return (
-    <div className='p-4'>
+    <div className='p-2'>
       <PeriodPicking period={period} setPeriod={setPeriod} />
       <InputMoney
         title='시드'
@@ -38,6 +38,7 @@ export default function AssetTermSetting(props) {
         setMoney={setMonthly}
         forexText={forexText}
       />
+
       <CheckForm
         title='배당금 재투자'
         subTitle='reinvest dividends'

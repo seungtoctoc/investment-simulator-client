@@ -15,7 +15,7 @@ export default function InputMoney(props) {
   const [formattedMoney, setFormattedMoney] = useState(0);
 
   return (
-    <>
+    <div>
       <Form.Label className='mt-4'>
         {title}
         <span className='text-secondary'> {subTitle}</span>
@@ -48,6 +48,6 @@ export default function InputMoney(props) {
       >
         {text}
       </p>
-    </>
+    </div>
   );
 }

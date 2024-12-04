@@ -10,7 +10,7 @@ export default function CheckForm(props) {
   return (
     <>
       <Form.Check
-        className='mt-4'
+        className='m-4'
         type='switch'
         label={
           <>
