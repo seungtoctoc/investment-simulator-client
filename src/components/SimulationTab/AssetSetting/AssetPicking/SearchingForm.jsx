@@ -8,6 +8,7 @@ import SearchResultCard from './SearchingForm/SearchResultCard';
 export default function SearchingForm(props) {
   const setAsset = props.setAsset;
   const setSymbol = props.setSymbol;
+  const isDollar = props.isDollar;
 
   const [searchResult, setSearchResult] = useState([]);
   const [isListVisible, setIsListVisible] = useState(false);
@@ -70,13 +71,21 @@ export default function SearchingForm(props) {
             className='position-absolute'
             style={{ width: '100%', top: '100%', zIndex: 10 }}
           >
-            {searchResult.map((asset, idx) => (
-              <SearchResultCard
-                asset={asset}
-                key={idx}
-                clickResult={clickResult}
-              />
-            ))}
+            {searchResult
+              .filter((asset) => {
+                if (!isDollar) {
+                  return asset.symbol !== 'KRWUSD';
+                } else {
+                  return asset.symbol !== 'USDKRW';
+                }
+              })
+              .map((asset, idx) => (
+                <SearchResultCard
+                  asset={asset}
+                  key={idx}
+                  clickResult={clickResult}
+                />
+              ))}
           </ListGroup>
         )}
       </Form>

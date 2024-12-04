@@ -5,6 +5,7 @@ import SearchingForm from './AssetPicking/SearchingForm';
 
 export default function AssetPicking(props) {
   const setSymbol = props.setSymbol;
+  const isDollar = props.isDollar;
 
   const [asset, setAsset] = useState({
     symbol: 'VOO',
@@ -16,7 +17,11 @@ export default function AssetPicking(props) {
 
   return (
     <div className='p-4'>
-      <SearchingForm setAsset={setAsset} setSymbol={setSymbol} />
+      <SearchingForm
+        setAsset={setAsset}
+        setSymbol={setSymbol}
+        isDollar={isDollar}
+      />
       <AssetCard asset={asset} />
     </div>
   );
