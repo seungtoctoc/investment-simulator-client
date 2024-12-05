@@ -9,6 +9,10 @@ export default function SubmitButton(props) {
   const [isWaiting, setIsWaiting] = useState(false);
 
   const clickSubmitButton = async () => {
+    if (isWaiting) {
+      return;
+    }
+
     setIsWaiting(true);
     getResult().then(() => {
       setIsWaiting(false);
