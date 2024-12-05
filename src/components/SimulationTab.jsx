@@ -5,11 +5,13 @@ import AssetSetting from './SimulationTab/AssetSetting';
 import SimulationResult from './SimulationTab/SimulationResult';
 import SubmitButton from './SimulationTab/SubmitButton';
 
+import { simulateAsset } from '../apis/apis';
+
 export default function SimulationTab() {
   const [period, setPeriod] = useState(10);
   const [seed, setSeed] = useState(0);
   const [monthly, setMonthly] = useState(0);
-  const [isReinvest, setIsReinvest] = useState(false);
+  const [isReinvest, setIsReinvest] = useState(true);
   const [isDollar, setIsDollar] = useState(false);
   const [asset, setAsset] = useState({
     symbol: 'VOO',
@@ -18,6 +20,24 @@ export default function SimulationTab() {
     exchange: 'AMEX',
     korean_name: null,
   });
+
+  const [result, setResult] = useState();
+
+  const getResult = () => {
+    return simulateAsset(
+      asset.symbol,
+      asset.exchange,
+      period,
+      seed,
+      monthly,
+      isReinvest,
+      isDollar
+    ).then((resp) => {
+      setResult(resp);
+      console.log('resp: ', resp);
+      return true;
+    });
+  };
 
   return (
     <div>
@@ -32,8 +52,8 @@ export default function SimulationTab() {
         isDollar={isDollar}
         setIsDollar={setIsDollar}
       />
-      <SubmitButton />
-      <SimulationResult />
+      <SubmitButton getResult={getResult} />
+      <SimulationResult result={result} />
     </div>
   );
 }

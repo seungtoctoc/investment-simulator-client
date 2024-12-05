@@ -39,11 +39,11 @@ export default function AssetTermSetting(props) {
         forexText={forexText}
       />
 
-      <CheckForm
+      {/* <CheckForm
         title='배당금 재투자'
         subTitle='reinvest dividends'
         setFunction={setIsReinvest}
-      />
+      /> */}
       <CheckForm
         title='달러로 계산'
         subTitle='calculate in USD($)'
