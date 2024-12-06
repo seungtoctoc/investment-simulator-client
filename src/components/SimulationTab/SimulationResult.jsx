@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Container from 'react-bootstrap/Container';
+import SummaryCard from './SimulationResult/SummaryCard';
+
 export default function SimulationResult(props) {
   const result = props.result;
 
@@ -7,6 +10,16 @@ export default function SimulationResult(props) {
     <div>
       {result ? (
         <>
+          <Container>
+            <SummaryCard
+              title='평가금액'
+              totalValuation={result.totalValuation}
+              totalProfit={result.totalProfit}
+              totalProfitRate={result.totalProfitRate}
+              data={result.valuationHistory}
+            />
+          </Container>
+
           <p>평가 금액 : {result.totalValuation}</p>
           <p>총 수익 : {result.totalProfit}</p>
           <p>수익률 : {result.totalProfitRate}</p>

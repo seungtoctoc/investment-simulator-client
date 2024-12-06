@@ -23,7 +23,7 @@ export default function OnBoarding() {
     <>
       {contents && contents.length > 0 ? (
         <Swiper
-          className='mt-4 mb-2 bg-primary'
+          className='mt-2 mb-2 bg-primary'
           style={{ height: '100px' }}
           direction='vertical'
           loop={true}

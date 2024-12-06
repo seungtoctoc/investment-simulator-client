@@ -21,7 +21,18 @@ export default function SimulationTab() {
     korean_name: null,
   });
 
-  const [result, setResult] = useState();
+  const [result, setResult] = useState({
+    totalValuation: 0,
+    totalProfit: 0,
+    totalProfitRate: 0,
+    totalAmount: 0,
+    totalDividend: 0,
+    extraCash: 0,
+    valuationHistory: [{ date: 0, valuation: 0 }],
+    purchaseHistory: [{ date: 0, price: 0, amount: 0, totalAmount: 0 }],
+    dividendHistory: [{ date: 0, amount: 0, dividend: 0, totalDividend: 0 }],
+    splitHistory: [{ date: 0, beforeAmount: 0, afterAmount: 0 }],
+  });
 
   const getResult = () => {
     return simulateAsset(
@@ -34,7 +45,7 @@ export default function SimulationTab() {
       isDollar
     ).then((resp) => {
       setResult(resp);
-      console.log('resp: ', resp);
+      // console.log('resp: ', resp);
       return true;
     });
   };
@@ -53,7 +64,7 @@ export default function SimulationTab() {
         setIsDollar={setIsDollar}
       />
       <SubmitButton getResult={getResult} />
-      <SimulationResult result={result} />
+      {result.totalProfit > 0 ? <SimulationResult result={result} /> : <></>}
     </div>
   );
 }

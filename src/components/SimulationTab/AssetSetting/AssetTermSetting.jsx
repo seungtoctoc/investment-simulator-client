@@ -31,14 +31,15 @@ export default function AssetTermSetting(props) {
         subTitle='seed money'
         setMoney={setSeed}
         forexText={forexText}
+        defaultValue='10,000,000'
       />
       <InputMoney
         title='월 납입'
         subTitle='monthly investment'
         setMoney={setMonthly}
         forexText={forexText}
+        defaultValue='500,000'
       />
-
       {/* <CheckForm
         title='배당금 재투자'
         subTitle='reinvest dividends'

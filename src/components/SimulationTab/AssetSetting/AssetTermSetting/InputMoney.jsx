@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -9,10 +9,31 @@ export default function InputMoney(props) {
   const subTitle = props.subTitle;
   const forexText = props.forexText;
   const setMoney = props.setMoney;
+  const defaultValue = props.defaultValue;
 
   const [text, setText] = useState('');
   const [isNumber, setIsNumber] = useState(true);
   const [formattedMoney, setFormattedMoney] = useState(0);
+
+  const updateValue = (updatedValue) => {
+    const rawValue = Number((updatedValue || '').replaceAll(',', ''));
+
+    if (isNaN(rawValue)) {
+      setText('숫자를 입력하세요');
+      setIsNumber(false);
+      return;
+    }
+
+    setFormattedMoney(rawValue.toLocaleString());
+    setMoney(rawValue);
+
+    setIsNumber(true);
+    setText(convertNumberToKorean(rawValue));
+  };
+
+  useEffect(() => {
+    updateValue(defaultValue);
+  }, []);
 
   return (
     <div>
@@ -24,19 +45,20 @@ export default function InputMoney(props) {
         <Form.Control
           value={formattedMoney}
           onChange={(e) => {
-            const rawValue = Number(e.target.value.replaceAll(',', ''));
+            updateValue(e.target.value);
+            // const rawValue = Number(e.target.value.replaceAll(',', ''));
 
-            if (isNaN(rawValue)) {
-              setText('숫자를 입력하세요');
-              setIsNumber(false);
-              return;
-            }
+            // if (isNaN(rawValue)) {
+            //   setText('숫자를 입력하세요');
+            //   setIsNumber(false);
+            //   return;
+            // }
 
-            setFormattedMoney(rawValue.toLocaleString());
-            setMoney(rawValue);
+            // setFormattedMoney(rawValue.toLocaleString());
+            // setMoney(rawValue);
 
-            setIsNumber(true);
-            setText(convertNumberToKorean(rawValue));
+            // setIsNumber(true);
+            // setText(convertNumberToKorean(rawValue));
           }}
         />
         <InputGroup.Text> {forexText} </InputGroup.Text>

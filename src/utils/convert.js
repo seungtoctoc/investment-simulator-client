@@ -20,12 +20,11 @@ export const convertNumberToKorean = (number) => {
 
     unitIndex++;
 
-    // 천 단위를 넘어가면 큰 단위로 전환
     if (unitIndex > 3 || i === 0) {
       if (chunkResult) {
         result = chunkResult + bigUnits[bigUnitIndex] + result;
       }
-      chunkResult = ''; // 작은 단위 초기화
+      chunkResult = '';
       unitIndex = 0;
       bigUnitIndex++;
     }
