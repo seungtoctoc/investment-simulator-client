@@ -1,6 +1,8 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
+import chartIcon from '../assets/chartIcon.png';
+
 export default function NavBar() {
   return (
     <Navbar expand='lg' className='bg-body-tertiary mb-4'>
@@ -8,7 +10,7 @@ export default function NavBar() {
         <Navbar.Brand href='/'>
           <img
             alt=''
-            src='src/assets/chartIcon.png'
+            src={chartIcon}
             width='30'
             height='30'
             className='d-inline-block align-top'
