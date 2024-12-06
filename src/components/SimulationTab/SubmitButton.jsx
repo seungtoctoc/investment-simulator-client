@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
 
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
@@ -20,28 +21,30 @@ export default function SubmitButton(props) {
   };
 
   return (
-    <div className='d-grid p-5'>
-      <Button
-        variant='outline-info'
-        size='lg'
-        onClick={() => {
-          clickSubmitButton();
-        }}
-      >
-        {isWaiting ? (
-          <>
-            <Spinner
-              as='span'
-              animation='grow'
-              size='sm'
-              role='status'
-              aria-hidden='true'
-            />
-          </>
-        ) : (
-          <span>Simulate!</span>
-        )}
-      </Button>
-    </div>
+    <Container>
+      <div className='d-grid p-5'>
+        <Button
+          variant='outline-info'
+          size='lg'
+          onClick={() => {
+            clickSubmitButton();
+          }}
+        >
+          {isWaiting ? (
+            <>
+              <Spinner
+                as='span'
+                animation='grow'
+                size='sm'
+                role='status'
+                aria-hidden='true'
+              />
+            </>
+          ) : (
+            <span>Simulate!</span>
+          )}
+        </Button>
+      </div>
+    </Container>
   );
 }

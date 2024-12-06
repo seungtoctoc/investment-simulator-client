@@ -46,19 +46,6 @@ export default function InputMoney(props) {
           value={formattedMoney}
           onChange={(e) => {
             updateValue(e.target.value);
-            // const rawValue = Number(e.target.value.replaceAll(',', ''));
-
-            // if (isNaN(rawValue)) {
-            //   setText('숫자를 입력하세요');
-            //   setIsNumber(false);
-            //   return;
-            // }
-
-            // setFormattedMoney(rawValue.toLocaleString());
-            // setMoney(rawValue);
-
-            // setIsNumber(true);
-            // setText(convertNumberToKorean(rawValue));
           }}
         />
         <InputGroup.Text> {forexText} </InputGroup.Text>

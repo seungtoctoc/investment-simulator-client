@@ -1,37 +1,72 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Container from 'react-bootstrap/Container';
-import SummaryCard from './SimulationResult/SummaryCard';
+import Summary from './SimulationResult/Summary';
+import DividendCard from './SimulationResult/DividendCard';
+import ZoomableLineChart from './SimulationResult/ZoomableLineChart';
+import ColumnChart from './SimulationResult/ColumnChart';
+import SplitCard from './SimulationResult/SplitCard';
 
 export default function SimulationResult(props) {
   const result = props.result;
+  const [formattedValuationHistory, setFormattedValuationHistory] = useState(
+    []
+  );
+  const [formattedDividendHistory, setFormattedDividendHistory] = useState([]);
+
+  useEffect(() => {
+    setFormattedValuationHistory(
+      result.valuationHistory.map((history) => ({
+        x: history.date,
+        y: history.valuation,
+      }))
+    );
+
+    setFormattedDividendHistory(
+      result.dividendHistory.map((history) => ({
+        x: history.date,
+        y: history.dividend,
+      }))
+    );
+  }, [result]);
 
   return (
     <div>
       {result ? (
         <>
           <Container>
-            <SummaryCard
-              title='평가금액'
+            <Summary
               totalValuation={result.totalValuation}
               totalProfit={result.totalProfit}
               totalProfitRate={result.totalProfitRate}
-              data={result.valuationHistory}
+              valuationHistory={result.valuationHistory}
               symbol={result.symbol}
               totalAmount={result.totalAmount}
               valuationCurrency={result.valuationCurrency}
               exchangeCurrency={result.exchangeCurrency}
               extraCash={result.extraCash}
             />
+            <ZoomableLineChart
+              name='평가금액'
+              data={formattedValuationHistory}
+              currency={result.valuationCurrency}
+            />
+            <DividendCard
+              totalDividend={result.totalDividend}
+              exchangeCurrency={result.exchangeCurrency}
+              numberOfDividend={result.dividendHistory.length}
+              valuationCurrency={result.valuationCurrency}
+            />
+            <ColumnChart
+              name='배당금'
+              data={formattedDividendHistory}
+              currency={result.exchangeCurrency}
+            />
+            <SplitCard
+              splitHistory={result.splitHistory}
+              valuationCurrency={result.valuationCurrency}
+            />
           </Container>
-
-          <p>평가 금액 : {result.totalValuation}</p>
-          <p>총 수익 : {result.totalProfit}</p>
-          <p>수익률 : {result.totalProfitRate}</p>
-          <p>보유 주식 수 : {result.totalAmount}</p>
-          <p>현금 : {result.extraCash}</p>
-
-          <p>총 배당금(주식 통화) : {result.totalDividend}</p>
         </>
       ) : (
         <></>

@@ -9,12 +9,6 @@ import { tips } from '../../../utils/tips';
 export default function OnBoarding() {
   const [contents, setContents] = useState([]);
 
-  const slideStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  };
-
   useEffect(() => {
     setContents(tips);
   }, []);
@@ -23,8 +17,8 @@ export default function OnBoarding() {
     <>
       {contents && contents.length > 0 ? (
         <Swiper
-          className='mt-2 mb-2 bg-primary'
-          style={{ height: '100px' }}
+          className='mt-2 mb-2'
+          style={{ height: '120px' }}
           direction='vertical'
           loop={true}
           autoplay={{
@@ -34,7 +28,10 @@ export default function OnBoarding() {
           modules={[Autoplay]}
         >
           {contents.map((content, idx) => (
-            <SwiperSlide style={slideStyle} key={idx}>
+            <SwiperSlide
+              className='text-center align-items-center justify-content-center d-flex'
+              key={idx}
+            >
               {content[0]}
               <br />
               {content[1]}
