@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import PeriodPicking from './AssetTermSetting/PeriodPicking.jsx';
 import InputMoney from './AssetTermSetting/InputMoney.jsx';
-import CheckForm from './AssetTermSetting/checkForm.jsx';
+import CheckForm from './AssetTermSetting/CheckForm.jsx';
 
 export default function AssetTermSetting(props) {
   const period = props.period;
