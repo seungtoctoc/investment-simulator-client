@@ -57,9 +57,7 @@ export default function SummaryCard(props) {
         show: false,
         labels: {
           formatter: function (value) {
-            return isDollar
-              ? formatNumber(value) + '$'
-              : formatNumber(value) + '원';
+            return formatNumber(value);
           },
         },
       },
@@ -87,11 +85,15 @@ export default function SummaryCard(props) {
     <Card>
       <Card.Header>{title}</Card.Header>
       <Card.Body>
-        <Card.Title>{formatNumber(totalValuation)}원</Card.Title>
+        <Card.Title>
+          {formatNumber(totalValuation)}
+          {isDollar ? ' 달러(USD)' : ' 원(KRW)'}
+        </Card.Title>
         <Card.Text>
           <span className={getProfitClaaName(totalProfit)}>
             {totalProfit > 0 ? '+' : ''}
-            {formatNumber(totalProfit)}원 ({totalProfit > 0 ? '+' : ''}
+            {formatNumber(totalProfit)}
+            {isDollar ? ' 달러(USD)' : ' 원(KRW)'} ({totalProfit > 0 ? '+' : ''}
             {totalProfitRate}% )
           </span>
         </Card.Text>

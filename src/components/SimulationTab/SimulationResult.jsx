@@ -5,7 +5,6 @@ import SummaryCard from './SimulationResult/SummaryCard';
 
 export default function SimulationResult(props) {
   const result = props.result;
-  const isDollar = props.isDollar;
 
   return (
     <div>
@@ -18,7 +17,7 @@ export default function SimulationResult(props) {
               totalProfit={result.totalProfit}
               totalProfitRate={result.totalProfitRate}
               data={result.valuationHistory}
-              isDollar={isDollar}
+              isDollar={result.isDollar}
             />
           </Container>
 
