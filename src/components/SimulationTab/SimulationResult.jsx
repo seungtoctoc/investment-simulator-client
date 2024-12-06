@@ -17,7 +17,11 @@ export default function SimulationResult(props) {
               totalProfit={result.totalProfit}
               totalProfitRate={result.totalProfitRate}
               data={result.valuationHistory}
-              isDollar={result.isDollar}
+              symbol={result.symbol}
+              totalAmount={result.totalAmount}
+              valuationCurrency={result.valuationCurrency}
+              exchangeCurrency={result.exchangeCurrency}
+              extraCash={result.extraCash}
             />
           </Container>
 

@@ -7,12 +7,18 @@ import { formatNumber } from '../../../utils/format';
 import { getProfitClaaName } from '../../../utils/utils';
 
 export default function SummaryCard(props) {
-  const title = props.title;
-  const totalValuation = props.totalValuation;
-  const totalProfit = props.totalProfit;
-  const totalProfitRate = props.totalProfitRate;
-  const data = props.data;
-  const isDollar = props.isDollar;
+  const {
+    title,
+    totalValuation,
+    totalProfit,
+    totalProfitRate,
+    data,
+    symbol,
+    totalAmount,
+    valuationCurrency,
+    exchangeCurrency,
+    extraCash,
+  } = props;
 
   const [state, setState] = React.useState({
     series: [
@@ -87,15 +93,24 @@ export default function SummaryCard(props) {
       <Card.Body>
         <Card.Title>
           {formatNumber(totalValuation)}
-          {isDollar ? ' 달러(USD)' : ' 원(KRW)'}
+          {' ' + valuationCurrency}
         </Card.Title>
         <Card.Text>
           <span className={getProfitClaaName(totalProfit)}>
             {totalProfit > 0 ? '+' : ''}
             {formatNumber(totalProfit)}
-            {isDollar ? ' 달러(USD)' : ' 원(KRW)'} ({totalProfit > 0 ? '+' : ''}
+            {' ' + valuationCurrency} ({totalProfit > 0 ? '+' : ''}
             {totalProfitRate}% )
           </span>
+        </Card.Text>
+        <Card.Text>
+          <strong>{symbol}</strong> {totalAmount}
+          {valuationCurrency === '달러(USD)' ? 'shares' : '주'}
+          <br />
+          <strong>
+            {valuationCurrency === '달러(USD)' ? 'Cash' : '현금'}
+          </strong>{' '}
+          {extraCash + ' ' + exchangeCurrency}
         </Card.Text>
         <ReactApexChart
           options={state.options}
