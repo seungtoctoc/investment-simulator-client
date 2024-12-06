@@ -36,6 +36,13 @@ export default function DividendHistory(props) {
           </strong>
           {': ' + totalDividend + ' ' + exchangeCurrency}
         </Card.Text>
+        <Card.Text>
+          <p>
+            {valuationCurrency === 'USD(달러)'
+              ? 'The dividend has been reinvested.'
+              : '배당금은 재투자 되었습니다.'}
+          </p>
+        </Card.Text>
       </Card.Body>
     </Card>
   );
