@@ -24,10 +24,8 @@ export default function ColumnChart(props) {
 
       plotOptions: {
         bar: {
-          borderRadius: 10,
-          dataLabels: {
-            position: 'bottom', // top, center, bottom
-          },
+          borderRadius: 2,
+          columnWidth: '100%',
         },
       },
       dataLabels: {
