@@ -12,6 +12,7 @@ export default function SummaryCard(props) {
   const totalProfit = props.totalProfit;
   const totalProfitRate = props.totalProfitRate;
   const data = props.data;
+  const isDollar = props.isDollar;
 
   const formattedData = data.map((item) => ({
     x: item.date, // 'date'를 'x'로 매핑
@@ -21,31 +22,41 @@ export default function SummaryCard(props) {
   const [state, setState] = React.useState({
     series: [
       {
+        name: '평가금액',
         data: formattedData,
       },
     ],
     options: {
       chart: {
+        type: 'area',
+        stacked: false,
         height: 350,
-        type: 'line',
         zoom: {
-          enabled: false,
+          type: 'x',
+          enabled: true,
+          autoScaleYaxis: true,
+        },
+        toolbar: {
+          autoSelected: 'pan',
         },
       },
       dataLabels: {
         enabled: false,
       },
-      stroke: {
-        curve: 'straight',
+      markers: {
+        size: 0,
       },
-      title: {
-        text: 'Product Trends by Month',
-        align: 'left',
+      xaxis: {
+        type: 'datetime',
       },
-      grid: {
-        row: {
-          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-          opacity: 0.5,
+      yaxis: {
+        show: false,
+        labels: {
+          formatter: function (value) {
+            return isDollar
+              ? formatNumber(value) + '$'
+              : formatNumber(value) + '원';
+          },
         },
       },
     },

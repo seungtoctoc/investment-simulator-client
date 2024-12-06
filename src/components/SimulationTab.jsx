@@ -64,7 +64,11 @@ export default function SimulationTab() {
         setIsDollar={setIsDollar}
       />
       <SubmitButton getResult={getResult} />
-      {result.totalProfit > 0 ? <SimulationResult result={result} /> : <></>}
+      {result.totalProfit > 0 ? (
+        <SimulationResult result={result} isDollar={isDollar} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
