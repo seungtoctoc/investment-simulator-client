@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Card from 'react-bootstrap/Card';
 import ReactApexChart from 'react-apexcharts';
@@ -14,16 +14,11 @@ export default function SummaryCard(props) {
   const data = props.data;
   const isDollar = props.isDollar;
 
-  const formattedData = data.map((item) => ({
-    x: item.date, // 'date'를 'x'로 매핑
-    y: item.valuation, // 'valuation'을 'y'로 매핑
-  }));
-
   const [state, setState] = React.useState({
     series: [
       {
         name: '평가금액',
-        data: formattedData,
+        data: [],
       },
     ],
     options: {
@@ -48,6 +43,15 @@ export default function SummaryCard(props) {
       },
       xaxis: {
         type: 'datetime',
+        labels: {
+          formatter: function (value) {
+            const date = new Date(value);
+            const year = String(date.getFullYear() % 100).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+          },
+        },
       },
       yaxis: {
         show: false,
@@ -61,6 +65,23 @@ export default function SummaryCard(props) {
       },
     },
   });
+
+  useEffect(() => {
+    const formattedData = data.map((item) => ({
+      x: item.date,
+      y: item.valuation,
+    }));
+
+    setState((prevState) => ({
+      ...prevState,
+      series: [
+        {
+          name: '평가금액',
+          data: formattedData,
+        },
+      ],
+    }));
+  }, [data]);
 
   return (
     <Card>

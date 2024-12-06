@@ -45,7 +45,6 @@ export default function SimulationTab() {
       isDollar
     ).then((resp) => {
       setResult(resp);
-      // console.log('resp: ', resp);
       return true;
     });
   };

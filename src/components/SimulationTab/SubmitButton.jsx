@@ -16,7 +16,6 @@ export default function SubmitButton(props) {
     setIsWaiting(true);
     getResult().then(() => {
       setIsWaiting(false);
-      console.log('false');
     });
   };
 
