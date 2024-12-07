@@ -8,7 +8,7 @@ export default function SplitCard(props) {
   return (
     <Card className='mb-5'>
       <Card.Header>
-        {valuationCurrency === 'USD(달러)' ? 'Split' : '분할'}
+        <>{valuationCurrency === 'USD(달러)' ? 'Split' : '분할'}</>
       </Card.Header>
       <Card.Body>
         <Card.Text>
@@ -23,11 +23,11 @@ export default function SplitCard(props) {
               </div>
             ))
           ) : (
-            <p>
+            <>
               {valuationCurrency === 'USD(달러)'
                 ? 'There is no split information.'
                 : '분할 정보가 없습니다.'}
-            </p>
+            </>
           )}
         </Card.Text>
       </Card.Body>
