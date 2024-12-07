@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-
-import ReactApexChart from 'react-apexcharts';
+import React from 'react';
 
 import Card from 'react-bootstrap/Card';
 import { formatNumber } from '../../../utils/format';
@@ -34,14 +32,12 @@ export default function DividendHistory(props) {
               ? 'Cumulative Dividend'
               : '누적 배당금'}
           </strong>
-          {': ' + totalDividend + ' ' + exchangeCurrency}
+          {': ' + formatNumber(totalDividend) + ' ' + exchangeCurrency}
         </Card.Text>
         <Card.Text>
-          <p>
-            {valuationCurrency === 'USD(달러)'
-              ? 'The dividend has been reinvested.'
-              : '배당금은 재투자 되었습니다.'}
-          </p>
+          {valuationCurrency === 'USD(달러)'
+            ? 'The dividend has been reinvested.'
+            : '배당금은 재투자 되었습니다.'}
         </Card.Text>
       </Card.Body>
     </Card>

@@ -14,13 +14,13 @@ export default function SplitCard(props) {
         <Card.Text>
           {splitHistory.length > 0 ? (
             splitHistory.map((history) => (
-              <p>
+              <div key={history.date}>
                 <strong>{history.date}</strong>
                 {' ' + history.beforeAmount}{' '}
                 {valuationCurrency === 'USD(달러)' ? ' shares' : ' 주'}{' '}
                 {' → ' + history.afterAmount}
                 {valuationCurrency === 'USD(달러)' ? ' shares' : ' 주'}
-              </p>
+              </div>
             ))
           ) : (
             <p>

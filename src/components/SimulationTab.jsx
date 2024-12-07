@@ -33,6 +33,7 @@ export default function SimulationTab() {
     dividendHistory: [{ date: 0, amount: 0, dividend: 0, totalDividend: 0 }],
     splitHistory: [{ date: 0, beforeAmount: 0, afterAmount: 0 }],
   });
+  const [loadResult, setLoadResult] = useState(false);
 
   const getResult = () => {
     return simulateAsset(
@@ -45,6 +46,8 @@ export default function SimulationTab() {
       isDollar
     ).then((resp) => {
       setResult(resp);
+      setLoadResult(true);
+      console.log('resp: ', resp);
       return true;
     });
   };
@@ -63,11 +66,7 @@ export default function SimulationTab() {
         setIsDollar={setIsDollar}
       />
       <SubmitButton getResult={getResult} />
-      {result.totalProfit > 0 ? (
-        <SimulationResult result={result} />
-      ) : (
-        <div></div>
-      )}
+      {loadResult ? <SimulationResult result={result} /> : <div></div>}
     </div>
   );
 }
