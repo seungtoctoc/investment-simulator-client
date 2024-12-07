@@ -43,6 +43,7 @@ export default function InputMoney(props) {
       </Form.Label>
       <InputGroup className=''>
         <Form.Control
+          type='tel'
           value={formattedMoney}
           onChange={(e) => {
             updateValue(e.target.value);

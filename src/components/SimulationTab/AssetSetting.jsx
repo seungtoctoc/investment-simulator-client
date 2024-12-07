@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import AssetPicking from './AssetSetting/AssetPicking.jsx';
 import AssetTermSetting from './AssetSetting/AssetTermSetting.jsx';
 import Tips from './AssetSetting/Tips.jsx';
-import Advertising from './AssetSetting/Advertising.jsx';
+import Advertising from '../Advertising/Advertising.jsx';
 
 export default function AssetSetting(props) {
   const setAsset = props.setAsset;
@@ -26,7 +26,7 @@ export default function AssetSetting(props) {
         <Col xs={12} md={7}>
           <AssetPicking setAsset={setAsset} isDollar={isDollar} asset={asset} />
           <Tips />
-          <Advertising />
+          <Advertising unit={`${import.meta.env.VITE_ADDFIT_UNIT_1}`} />
         </Col>
         <Col xs={12} md={5}>
           <AssetTermSetting

@@ -3,7 +3,7 @@ import React from 'react';
 export default function Footer() {
   return (
     <div
-      className='bg-light mt-5 d-flex flex-column justify-content-center align-items-center'
+      className='bg-light mt-1 d-flex flex-column justify-content-center align-items-center'
       style={{ height: '280px', marginTop: '480px' }}
     >
       <div className='text-body-secondary text-center m-4'>

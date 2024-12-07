@@ -18,7 +18,7 @@ export default function OnBoarding() {
       {contents && contents.length > 0 ? (
         <Swiper
           className='mt-2 mb-2'
-          style={{ height: '120px' }}
+          style={{ height: '124px' }}
           direction='vertical'
           loop={true}
           autoplay={{
