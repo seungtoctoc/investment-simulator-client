@@ -62,10 +62,10 @@ export default function SimulationResult(props) {
               data={formattedDividendHistory}
               currency={result.exchangeCurrency}
             />
-            <SplitCard
+            {/* <SplitCard
               splitHistory={result.splitHistory}
               valuationCurrency={result.valuationCurrency}
-            />
+            /> */}
           </Container>
         </>
       ) : (
