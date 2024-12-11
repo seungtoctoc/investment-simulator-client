@@ -43,7 +43,7 @@ export default function Summary(props) {
             <strong>
               {valuationCurrency === 'USD(달러)' ? 'Cash' : '현금'}
             </strong>{' '}
-            {extraCash + ' ' + exchangeCurrency}
+            {formatNumber(extraCash) + ' ' + exchangeCurrency}
           </Card.Text>
         </Card.Body>
       </Card>

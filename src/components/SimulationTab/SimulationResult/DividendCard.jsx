@@ -24,7 +24,7 @@ export default function DividendHistory(props) {
               ? 'Dividend Payment Count'
               : '배당 횟수'}
           </strong>
-          {': ' + numberOfDividend}
+          {': ' + formatNumber(numberOfDividend)}
           {valuationCurrency === 'USD(달러)' ? ' times' : ' 회'}
           <br />
           <strong>
